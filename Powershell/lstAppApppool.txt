@@ -1,0 +1,21 @@
+//list app and pool: you will see site corresponding pool
+
+Import-Module WebAdministration
+
+dir IIS:\Sites # Lists all sites
+dir IIS:\AppPools # Lists all app pools and applications
+
+
+# List all sites, applications and appPools
+Import-Module WebAdministration
+dir IIS:\Sites | ForEach-Object {
+
+    # Web site name
+    $_.Name
+
+    # Site's app pool
+    $_.applicationPool
+
+    # Any web applications on the site + their app pools
+    Get-WebApplication -Site $_.Name
+}
